@@ -1,0 +1,40 @@
+MODELAGEM - FLUXO SERVICE DESK
+Classes:
+- Pessoa;
+	* Nome;
+	* CPF;
+	* RG;
+	- Cliente (herda Pessoa);
+		* LoginCliente;
+		* SenhaCliente;
+		* DescriçãoSolicitaçãoAtendimento;
+		> SolicitarAtendimento;
+	- Atendente (herda Pessoa):
+		* LoginServiceDesk;
+		* SenhaServiceDesk;
+		> RegistrarOrdemServiço;
+	- Técnico (herda Pessoa);
+		* IdSolicitação;
+		* RegistroAtendimento;
+		* Observação;
+		> RealizarAtendimento; 
+		> RegistrarSuporteRealizado (?);	
+- Atendimento;
+	* Situação;
+	* OrdemServiço (0- Incidente, 1- Problema, 2- Solicitação) (?);
+	* DataRegistro;
+	* HistoricoRegistro (?);
+	* IdSolicitação (?);
+	> GuardarRegistro;
+- Categoria (tem SubCategoria e ItemCategoria);
+	* TipoCategoria;
+	* IdSubCategoria;
+	* IdItemCategoria;
+	> RegistrarCategoria;	
+	- SubCategoria;
+		* Hardware;
+		* Software;
+		* IdItemCategoria;	
+	- ItemCategoria;
+		* Descrição;
+		* Status;
